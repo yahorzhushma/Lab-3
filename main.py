@@ -70,20 +70,16 @@ while True:
                     print(f"{name}: {average_score}")
 
     elif choice == '3':
-        # Создаем пустой словарь для хранения информации о предметах и занятиях
         subjects_dict = {}
 
-        # Открываем файл для чтения
         with open('предметы.txt', 'r') as file:
             for line in file:
-                parts = line.split(":")  # Разделяем строку по двоеточию
-                subject = parts[0].strip()  # Название предмета
-                info = parts[1].strip()  # Информация о занятиях
+                parts = line.split(":")
+                subject = parts[0].strip()
+                info = parts[1].strip()
 
-                # Разбиваем информацию о занятиях на части
                 data = info.split()
 
-                # Инициализируем счетчик для общего количества занятий
                 total_lessons = 0
 
                 for item in data:
@@ -94,10 +90,8 @@ while True:
                     elif item.endswith("(лаб)"):
                         total_lessons += int(item[:-5])
 
-                # Добавляем информацию о предмете и общем количестве занятий в словарь
                 subjects_dict[subject] = total_lessons
 
-        # Выводим словарь на экран
         print("Словарь с общим количеством занятий по предметам:")
         print(subjects_dict)
 
