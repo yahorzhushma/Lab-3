@@ -1,0 +1,4 @@
+BelSolod ннн 10000 5000
+TechnoBel гюн 15000 7000
+Cherenki юн 8000 10000
+Zhumsha хо 5000 3000
