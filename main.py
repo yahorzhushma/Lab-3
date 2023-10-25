@@ -3,7 +3,8 @@ while True:
     print("1. Копирование из F1 в F2")
     print("2. Студенты")
     print("3. Предметы")
-    print("4. Завершение программы")
+    print("4. Фирмы")
+    print("5. Завершение программы")
 
     choice = input("Введите номер действия: ")
 
@@ -96,6 +97,41 @@ while True:
         print(subjects_dict)
 
     elif choice == '4':
+        import json
+
+        with open('фирмы.txt', 'w') as file:
+            file.write("BelSolod ООО 10000 5000\n")
+            file.write("TechnoBel ЗАО 15000 7000\n")
+            file.write("Cherenki АО 8000 10000\n")
+            file.write("Zhumsha ИП 5000 3000\n")
+
+        profit_dict = {}
+        total_profit = 0
+        num_firms = 0
+
+        with open('фирмы.txt', 'r') as file:
+            for line in file:
+                parts = line.split()
+                name = parts[0]
+                revenue = int(parts[2])
+                costs = int(parts[3])
+                profit = revenue - costs
+
+                if profit > 0:
+                    profit_dict[name] = profit
+                    total_profit += profit
+                    num_firms += 1
+                else:
+                    profit_dict[name] = profit
+
+        average_profit = total_profit / num_firms if num_firms > 0 else 0
+
+        result_list = [profit_dict, {"average_profit": average_profit}]
+
+        with open('результат.json', 'w') as file:
+            json.dump(result_list, file)
+
+    elif choice == '5':
         break
 
     else:
